@@ -1,0 +1,84 @@
+Act as a senior software architect, AI engineer, and startup builder.
+
+I have uploaded a Rust-based project (claw-code-main.zip). Analyze the entire codebase and use it as a foundation.
+
+Goal:
+Build a complete AI Coding Assistant that I can monetize (SaaS product).
+
+Core Features Required:
+1. Code Auto-Generation
+   - User enters prompt (e.g., "Python snake game")
+   - AI generates clean, working code
+   - Support multiple languages (Python, C, JavaScript)
+
+2. Debugging Assistant
+   - User pastes code
+   - Detect syntax + logical errors
+   - Return corrected code + explanation
+
+3. Automation Script Generator
+   - Generate scripts for repetitive tasks
+   - Examples: file renaming, scraping, backups
+
+4. Chat Interface
+   - ChatGPT-like UI
+   - Conversation history
+   - Code formatting (syntax highlight)
+
+Architecture:
+- Backend:
+  - Use Python (FastAPI) OR Node.js (Express)
+  - Integrate AI APIs (OpenAI / OpenRouter)
+  - Reuse logic from uploaded Rust project wherever useful
+
+- Frontend:
+  - Simple modern UI (HTML, CSS, JS or React)
+  - Chat interface + input box + response area
+
+- API Layer:
+  - /generate-code
+  - /debug-code
+  - /automation-script
+
+- Database (optional):
+  - Store chat history (SQLite or Firebase)
+
+Advanced Features (if possible):
+- Code explanation mode
+- Download generated code as file
+- User authentication (basic login system)
+- Dark mode UI
+
+Monetization Plan:
+- Free tier (limited requests)
+- Paid tier (unlimited usage)
+- Add usage tracking system
+
+Instructions:
+1. First, analyze the uploaded Rust project and explain:
+   - What parts can be reused
+   - What should be rewritten
+
+2. Then design full system architecture clearly.
+
+3. Then generate complete working code step-by-step:
+   - Backend
+   - Frontend
+   - API integration
+
+4. Ensure the project runs perfectly on Replit.
+
+5. Keep code beginner-friendly and well-commented.
+
+6. Optimize for mobile usage (since I may use phone).
+
+7. Provide deployment steps.
+
+Important:
+- Do NOT skip steps
+- Give full working code (no placeholders)
+- Ensure minimal errors
+- Think like building a real startup product
+
+End Goal:
+A working AI coding assistant web app that I can launch and sell.
