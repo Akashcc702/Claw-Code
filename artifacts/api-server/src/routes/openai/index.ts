@@ -10,8 +10,18 @@ import {
   SendOpenaiMessageBody,
   GenerateOpenaiImageBody,
 } from "@workspace/api-zod";
-import { openai } from "@workspace/integrations-openai-ai-server";
-import { generateImageBuffer } from "@workspace/integrations-openai-ai-server/image";
+import OpenAI from "openai";
+
+const openrouter = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY ?? "",
+  defaultHeaders: {
+    "HTTP-Referer": "https://codecraft.ai",
+    "X-Title": "CodeCraft AI",
+  },
+});
+
+const MODEL = "google/gemma-3-4b-it:free";
 
 const router: IRouter = Router();
 
@@ -178,9 +188,9 @@ router.post("/openai/conversations/:id/messages", async (req, res): Promise<void
 
   let fullResponse = "";
 
-  const stream = await openai.chat.completions.create({
-    model: "gpt-5.3-codex",
-    max_completion_tokens: 8192,
+  const stream = await openrouter.chat.completions.create({
+    model: MODEL,
+    max_tokens: 8192,
     messages: chatMessages,
     stream: true,
   });
@@ -209,9 +219,7 @@ router.post("/openai/generate-image", async (req, res): Promise<void> => {
     res.status(400).json({ error: parsed.error.message });
     return;
   }
-
-  const buffer = await generateImageBuffer(parsed.data.prompt, parsed.data.size as "1024x1024" | "512x512" | "256x256" | undefined);
-  res.json({ b64_json: buffer.toString("base64") });
+  res.status(501).json({ error: "Image generation not supported with this model" });
 });
 
 export default router;
